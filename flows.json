@@ -1,0 +1,1186 @@
+[
+    {
+        "id": "fc6c3c6a68baf371",
+        "type": "tab",
+        "label": "Main",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "b6defdd22e415430",
+        "type": "tab",
+        "label": "Database",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "049d8c751483bfa7",
+        "type": "tab",
+        "label": "TG bot hooks",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "4f625833a90ff676",
+        "type": "postgreSQLConfig",
+        "name": "",
+        "host": "127.0.0.1",
+        "hostFieldType": "str",
+        "port": 5432,
+        "portFieldType": "num",
+        "database": "ecobank",
+        "databaseFieldType": "str",
+        "ssl": "false",
+        "sslFieldType": "bool",
+        "applicationName": "",
+        "applicationNameType": "str",
+        "max": 10,
+        "maxFieldType": "num",
+        "idle": 1000,
+        "idleFieldType": "num",
+        "connectionTimeout": 10000,
+        "connectionTimeoutFieldType": "num",
+        "user": "postgres",
+        "userFieldType": "str",
+        "password": "postgres",
+        "passwordFieldType": "str"
+    },
+    {
+        "id": "bc600e1449443e2c",
+        "type": "link out",
+        "z": "fc6c3c6a68baf371",
+        "name": "main",
+        "mode": "link",
+        "links": [
+            "07fdd3fa8b0747ee",
+            "aab2541bac3c1e7d",
+            "2de108604247dcf6"
+        ],
+        "x": 375,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "07fdd3fa8b0747ee",
+        "type": "link in",
+        "z": "fc6c3c6a68baf371",
+        "name": "main",
+        "links": [
+            "bc600e1449443e2c"
+        ],
+        "x": 45,
+        "y": 140,
+        "wires": [
+            [
+                "977e7db9686137f8"
+            ]
+        ]
+    },
+    {
+        "id": "29ec7e6dd41b45df",
+        "type": "change",
+        "z": "fc6c3c6a68baf371",
+        "name": "define consts",
+        "rules": [
+            {
+                "t": "set",
+                "p": "TG_BASE_API_URL",
+                "pt": "global",
+                "to": "https://api.telegram.org/bot",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 270,
+        "y": 60,
+        "wires": [
+            [
+                "bc600e1449443e2c"
+            ]
+        ]
+    },
+    {
+        "id": "977e7db9686137f8",
+        "type": "debug",
+        "z": "fc6c3c6a68baf371",
+        "name": "on load",
+        "active": true,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": false,
+        "complete": "'Ready'",
+        "targetType": "jsonata",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 160,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "a137930be9ba7168",
+        "type": "inject",
+        "z": "fc6c3c6a68baf371",
+        "name": "entrypoint",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "0",
+        "topic": "",
+        "x": 120,
+        "y": 60,
+        "wires": [
+            [
+                "29ec7e6dd41b45df"
+            ]
+        ]
+    },
+    {
+        "id": "ed17e1f6e8f5452a",
+        "type": "http in",
+        "z": "fc6c3c6a68baf371",
+        "name": "test",
+        "url": "/test",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 90,
+        "y": 260,
+        "wires": [
+            [
+                "edb2c524b62793d2",
+                "65c92b95ac045bcc"
+            ]
+        ]
+    },
+    {
+        "id": "edb2c524b62793d2",
+        "type": "http response",
+        "z": "fc6c3c6a68baf371",
+        "name": "test resp",
+        "statusCode": "200",
+        "headers": {},
+        "x": 280,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "97d5415f82d7bf44",
+        "type": "comment",
+        "z": "fc6c3c6a68baf371",
+        "name": "ping our entpoint",
+        "info": "<!-- Example: -->\nhttp://127.0.0.1:1880/test?param=1,asd=2",
+        "x": 120,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "65c92b95ac045bcc",
+        "type": "debug",
+        "z": "fc6c3c6a68baf371",
+        "name": "test resp",
+        "active": true,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 290,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "2de108604247dcf6",
+        "type": "link in",
+        "z": "b6defdd22e415430",
+        "name": "main",
+        "links": [
+            "bc600e1449443e2c"
+        ],
+        "x": 45,
+        "y": 60,
+        "wires": [
+            [
+                "a50ad12e9f52bbeb"
+            ]
+        ]
+    },
+    {
+        "id": "9cd4bbcc0ee67f50",
+        "type": "postgresql",
+        "z": "b6defdd22e415430",
+        "name": "local db",
+        "query": "SELECT 1;",
+        "postgreSQLConfig": "4f625833a90ff676",
+        "split": false,
+        "rowsPerMsg": 1,
+        "outputs": 1,
+        "x": 320,
+        "y": 60,
+        "wires": [
+            [
+                "4753ed95631aff25"
+            ]
+        ]
+    },
+    {
+        "id": "df385bf7467d943e",
+        "type": "debug",
+        "z": "b6defdd22e415430",
+        "name": "pg ok",
+        "active": true,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": false,
+        "complete": "'Postgress is ok'",
+        "targetType": "jsonata",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 660,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "4753ed95631aff25",
+        "type": "switch",
+        "z": "b6defdd22e415430",
+        "name": "check status",
+        "property": "pgsql.rowCount",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "str"
+            },
+            {
+                "t": "neq",
+                "v": "1",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 470,
+        "y": 60,
+        "wires": [
+            [
+                "df385bf7467d943e"
+            ],
+            [
+                "800902cf02bcf94f"
+            ]
+        ]
+    },
+    {
+        "id": "800902cf02bcf94f",
+        "type": "debug",
+        "z": "b6defdd22e415430",
+        "name": "pg not ok",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "'Postgress is NOT ok'",
+        "targetType": "jsonata",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 660,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "a50ad12e9f52bbeb",
+        "type": "change",
+        "z": "b6defdd22e415430",
+        "name": "setup params",
+        "rules": [
+            {
+                "t": "set",
+                "p": "pgConfig.user",
+                "pt": "msg",
+                "to": "PG_USER",
+                "tot": "env"
+            },
+            {
+                "t": "set",
+                "p": "pgConfig.password",
+                "pt": "msg",
+                "to": "PG_PASSWORD",
+                "tot": "env"
+            },
+            {
+                "t": "set",
+                "p": "pgConfig.host",
+                "pt": "msg",
+                "to": "PG_HOST",
+                "tot": "env"
+            },
+            {
+                "t": "set",
+                "p": "pgConfig.database",
+                "pt": "msg",
+                "to": "PG_DATABASE",
+                "tot": "env"
+            },
+            {
+                "t": "set",
+                "p": "pgConfig.port",
+                "pt": "msg",
+                "to": "PG_PORT",
+                "tot": "env"
+            },
+            {
+                "t": "set",
+                "p": "pgConfig",
+                "pt": "msg",
+                "to": "false",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 160,
+        "y": 60,
+        "wires": [
+            [
+                "9cd4bbcc0ee67f50"
+            ]
+        ]
+    },
+    {
+        "id": "aab2541bac3c1e7d",
+        "type": "link in",
+        "z": "049d8c751483bfa7",
+        "name": "main",
+        "links": [
+            "bc600e1449443e2c"
+        ],
+        "x": 45,
+        "y": 60,
+        "wires": [
+            [
+                "7bea775ea407a36b",
+                "3aa587d3ad9cd229"
+            ]
+        ]
+    },
+    {
+        "id": "7bea775ea407a36b",
+        "type": "function",
+        "z": "049d8c751483bfa7",
+        "name": "setup hooks",
+        "func": "msg.url = global.get('TG_BASE_API_URL')\n    + env.get('TG_API_TOKEN')\n    + '/setWebhook'\n\n// msg.req.params;\nmsg.payload = ({\n    \"url\": `https://${env.get('DOMAIN')}/api/webhook`\n});\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 170,
+        "y": 60,
+        "wires": [
+            [
+                "07269c3be34b6f19"
+            ]
+        ]
+    },
+    {
+        "id": "07269c3be34b6f19",
+        "type": "http request",
+        "z": "049d8c751483bfa7",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "query",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 350,
+        "y": 60,
+        "wires": [
+            [
+                "a32bd5a61ace1d77",
+                "c925ab28983bf538"
+            ]
+        ]
+    },
+    {
+        "id": "b93ea18133f866e5",
+        "type": "http request",
+        "z": "049d8c751483bfa7",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 330,
+        "y": 180,
+        "wires": [
+            [
+                "1de1ee7f16c79c98"
+            ]
+        ]
+    },
+    {
+        "id": "10501fce63484011",
+        "type": "debug",
+        "z": "049d8c751483bfa7",
+        "name": "tg api ok",
+        "active": true,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": false,
+        "complete": "'Telegram API is ok'",
+        "targetType": "jsonata",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 670,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "3aa587d3ad9cd229",
+        "type": "function",
+        "z": "049d8c751483bfa7",
+        "name": "tg api test request",
+        "func": "msg.url = global.get('TG_BASE_API_URL')\n    + env.get('TG_API_TOKEN')\n    + '/getMe'\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 150,
+        "y": 180,
+        "wires": [
+            [
+                "b93ea18133f866e5"
+            ]
+        ]
+    },
+    {
+        "id": "7fe27bdf65125376",
+        "type": "comment",
+        "z": "049d8c751483bfa7",
+        "name": "ping tg api",
+        "info": "",
+        "x": 120,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "1de1ee7f16c79c98",
+        "type": "switch",
+        "z": "049d8c751483bfa7",
+        "name": "check status",
+        "property": "statusCode",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "200",
+                "vt": "num"
+            },
+            {
+                "t": "neq",
+                "v": "200",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 490,
+        "y": 180,
+        "wires": [
+            [
+                "10501fce63484011"
+            ],
+            [
+                "232cd01bd004c085"
+            ]
+        ]
+    },
+    {
+        "id": "232cd01bd004c085",
+        "type": "debug",
+        "z": "049d8c751483bfa7",
+        "name": "tg api not ok",
+        "active": true,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": false,
+        "complete": "'Telegram API is NOT ok'",
+        "targetType": "jsonata",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 680,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "acf4c7d169940ce3",
+        "type": "http in",
+        "z": "049d8c751483bfa7",
+        "name": "",
+        "url": "/webhook",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 140,
+        "y": 420,
+        "wires": [
+            [
+                "b1420f1091d80646",
+                "312c6be9de8667a2"
+            ]
+        ]
+    },
+    {
+        "id": "b1420f1091d80646",
+        "type": "debug",
+        "z": "049d8c751483bfa7",
+        "name": "post hook",
+        "active": true,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 390,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "a32bd5a61ace1d77",
+        "type": "http response",
+        "z": "049d8c751483bfa7",
+        "name": "test resp",
+        "statusCode": "200",
+        "headers": {},
+        "x": 540,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "c925ab28983bf538",
+        "type": "debug",
+        "z": "049d8c751483bfa7",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 540,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "efab378061d1156b",
+        "type": "switch",
+        "z": "049d8c751483bfa7",
+        "name": "commands",
+        "property": "command",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "/start",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "/all",
+                "vt": "str"
+            },
+            {
+                "t": "regex",
+                "v": "^([0-2][0-9]|3[0-1])/(0[1-9]|1[0-2])/\\d{4}$",
+                "vt": "str",
+                "case": false
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 4,
+        "x": 130,
+        "y": 560,
+        "wires": [
+            [
+                "4c2c4badda4d7d6f",
+                "c394c44f5b3b73b1"
+            ],
+            [
+                "70434503795cd037",
+                "227ff8bf72f058a8"
+            ],
+            [
+                "79fc079ab99749ef",
+                "f9f9db5d164674fc"
+            ],
+            [
+                "62ea9738ca495e30",
+                "c50c43af03451e63"
+            ]
+        ]
+    },
+    {
+        "id": "4c2c4badda4d7d6f",
+        "type": "debug",
+        "z": "049d8c751483bfa7",
+        "name": "cmd /start",
+        "active": false,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": false,
+        "complete": "payload.message.text",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 350,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "0b55e4396155c262",
+        "type": "catch",
+        "z": "049d8c751483bfa7",
+        "name": "",
+        "scope": null,
+        "uncaught": false,
+        "x": 120,
+        "y": 260,
+        "wires": [
+            [
+                "8d4f10010ed441dd",
+                "59405db4658f9011"
+            ]
+        ]
+    },
+    {
+        "id": "8d4f10010ed441dd",
+        "type": "debug",
+        "z": "049d8c751483bfa7",
+        "name": "error msg",
+        "active": true,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": false,
+        "complete": "error.message",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 290,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "62ea9738ca495e30",
+        "type": "debug",
+        "z": "049d8c751483bfa7",
+        "name": "if not matched",
+        "active": false,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": false,
+        "complete": "payload.message.text",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 370,
+        "y": 900,
+        "wires": []
+    },
+    {
+        "id": "312c6be9de8667a2",
+        "type": "function",
+        "z": "049d8c751483bfa7",
+        "name": "extract text",
+        "func": "msg.command = msg.payload.message.text\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 130,
+        "y": 500,
+        "wires": [
+            [
+                "efab378061d1156b"
+            ]
+        ]
+    },
+    {
+        "id": "2623867bd419fb3e",
+        "type": "function",
+        "z": "049d8c751483bfa7",
+        "name": "echo response",
+        "func": "const chatId = msg.payload.message.chat.id;\nconst text = msg.payload.message.text;\n\nmsg.url = global.get('TG_BASE_API_URL')\n    + env.get('TG_API_TOKEN')\n    + '/sendMessage'\n\nmsg.payload = {\n  chat_id: chatId,\n  text: \"Hello! Welcome to my bot.\" + text\n};\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 440,
+        "wires": [
+            [
+                "dc1adf051256c29b"
+            ]
+        ]
+    },
+    {
+        "id": "dc1adf051256c29b",
+        "type": "http request",
+        "z": "049d8c751483bfa7",
+        "name": "",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 570,
+        "y": 440,
+        "wires": [
+            [
+                "a5609b49780a0715"
+            ]
+        ]
+    },
+    {
+        "id": "a5609b49780a0715",
+        "type": "http response",
+        "z": "049d8c751483bfa7",
+        "name": "ok1",
+        "statusCode": "200",
+        "headers": {},
+        "x": 730,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "c394c44f5b3b73b1",
+        "type": "function",
+        "z": "049d8c751483bfa7",
+        "name": "welcome",
+        "func": "const chatId = msg.payload.message.chat.id;\nconst text = msg.payload.message.text;\nconst userName = [\n  msg.payload.message.chat.first_name,\n  msg.payload.message.chat.last_name\n].join(' ');\n\nmsg.url = global.get('TG_BASE_API_URL')\n    + env.get('TG_API_TOKEN')\n    + '/sendMessage'\n\nmsg.payload = {\n  chat_id: chatId,\n  text: `\n    Привіт, ${userName}. Це демо бот. Функціонал в мене буде\n    обмеженим, щоб не робити зайвого, тому\n    працюватимем з командами. Напишіть дату\n    народження у форматі DD/MM/YYYY\n  `.replaceAll('\\n', ' ').replaceAll('    ', ' ')\n};\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 580,
+        "wires": [
+            [
+                "0ab21d4055f3b4b6"
+            ]
+        ]
+    },
+    {
+        "id": "0ab21d4055f3b4b6",
+        "type": "http request",
+        "z": "049d8c751483bfa7",
+        "name": "r",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 470,
+        "y": 580,
+        "wires": [
+            [
+                "ae142c934dec7765"
+            ]
+        ]
+    },
+    {
+        "id": "ae142c934dec7765",
+        "type": "http response",
+        "z": "049d8c751483bfa7",
+        "name": "ok",
+        "statusCode": "200",
+        "headers": {},
+        "x": 590,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "79fc079ab99749ef",
+        "type": "debug",
+        "z": "049d8c751483bfa7",
+        "name": "date from user",
+        "active": true,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 370,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "f9f9db5d164674fc",
+        "type": "function",
+        "z": "049d8c751483bfa7",
+        "name": "save date",
+        "func": "msg.payloadOrig = msg.payload;\n\nfunction stringToNumber(str) {\n  let number = 0;\n  for (let i = 0; i < str.length; i++) {\n    number = number * 26 + (str.charCodeAt(i) - 97);\n  }\n  return number;\n}\n\nlet date;\n\ntry {\n  date = new Date(msg.payload.message.text).toISOString();\n} catch {\n  msg.payloadOrig.error = 'Invalid date format';\n}\n\nconst chatId = msg.payload.message.chat.id;\nconst userName = [\n  msg.payload.message.chat.first_name,\n  msg.payload.message.chat.last_name\n].join(' ');\nconst userId = stringToNumber(msg.payload.message.chat.username);\n\nmsg.query = `\n  INSERT INTO contacts (contact_name, birthday, user_id)\n  VALUES ($1, $2, $3)\n  ON CONFLICT (user_id) \n  DO UPDATE SET \n    contact_name = EXCLUDED.contact_name,\n    birthday = EXCLUDED.birthday;\n`;\n\nmsg.params = [\n  userName,\n  date,\n  userId\n];\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 820,
+        "wires": [
+            [
+                "f8fa606f35279bea"
+            ]
+        ]
+    },
+    {
+        "id": "31b1a465182913f8",
+        "type": "http request",
+        "z": "049d8c751483bfa7",
+        "name": "r",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 870,
+        "y": 820,
+        "wires": [
+            [
+                "53afdebff10c9d0f"
+            ]
+        ]
+    },
+    {
+        "id": "53afdebff10c9d0f",
+        "type": "http response",
+        "z": "049d8c751483bfa7",
+        "name": "ok2",
+        "statusCode": "200",
+        "headers": {},
+        "x": 990,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "f8fa606f35279bea",
+        "type": "postgresql",
+        "z": "049d8c751483bfa7",
+        "name": "save user & date",
+        "query": "",
+        "postgreSQLConfig": "4f625833a90ff676",
+        "split": false,
+        "rowsPerMsg": 1,
+        "outputs": 1,
+        "x": 510,
+        "y": 820,
+        "wires": [
+            [
+                "e9725072b845efa6",
+                "4ff3e92b1e709624"
+            ]
+        ]
+    },
+    {
+        "id": "e9725072b845efa6",
+        "type": "function",
+        "z": "049d8c751483bfa7",
+        "name": "saved. what's next?",
+        "func": "msg.payload = msg.payloadOrig;\n\nconst chatId = msg.payload.message.chat.id;\nconst text = msg.payload.message.text;\nconst userName = [\n  msg.payload.message.chat.first_name,\n  msg.payload.message.chat.last_name\n].join(' ');\n\nmsg.url = global.get('TG_BASE_API_URL')\n    + env.get('TG_API_TOKEN')\n    + '/sendMessage'\n\nmsg.payload = {\n  chat_id: chatId,\n  text: `\n    Збережено. Тепер моєеш спробувати глянути скільки нас з командою /all\n  `\n};\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 710,
+        "y": 820,
+        "wires": [
+            [
+                "31b1a465182913f8"
+            ]
+        ]
+    },
+    {
+        "id": "c50c43af03451e63",
+        "type": "function",
+        "z": "049d8c751483bfa7",
+        "name": "try again",
+        "func": "const chatId = msg.payload.message.chat.id;\nconst text = msg.payload.message.text;\nconst userName = [\n  msg.payload.message.chat.first_name,\n  msg.payload.message.chat.last_name\n].join(' ');\n\nmsg.url = global.get('TG_BASE_API_URL')\n    + env.get('TG_API_TOKEN')\n    + '/sendMessage'\n\nmsg.payload = {\n  chat_id: chatId,\n  text: `\n    Схоже на ельфійську, не можу прочитати..\n  `\n};\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 940,
+        "wires": [
+            [
+                "f9450a0c226d5e94"
+            ]
+        ]
+    },
+    {
+        "id": "f9450a0c226d5e94",
+        "type": "http request",
+        "z": "049d8c751483bfa7",
+        "name": "r",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 490,
+        "y": 940,
+        "wires": [
+            [
+                "eadaa5a7067dd421"
+            ]
+        ]
+    },
+    {
+        "id": "eadaa5a7067dd421",
+        "type": "http response",
+        "z": "049d8c751483bfa7",
+        "name": "ok3",
+        "statusCode": "200",
+        "headers": {},
+        "x": 610,
+        "y": 940,
+        "wires": []
+    },
+    {
+        "id": "59405db4658f9011",
+        "type": "debug",
+        "z": "049d8c751483bfa7",
+        "name": "error source",
+        "active": true,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": false,
+        "complete": "error.source",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 480,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "4ff3e92b1e709624",
+        "type": "debug",
+        "z": "049d8c751483bfa7",
+        "name": "save sql resp",
+        "active": false,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 700,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "70434503795cd037",
+        "type": "debug",
+        "z": "049d8c751483bfa7",
+        "name": "cmd /all",
+        "active": true,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 350,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "d1dd9cca4871ab5e",
+        "type": "http request",
+        "z": "049d8c751483bfa7",
+        "name": "r",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 910,
+        "y": 700,
+        "wires": [
+            [
+                "335531057af00571"
+            ]
+        ]
+    },
+    {
+        "id": "335531057af00571",
+        "type": "http response",
+        "z": "049d8c751483bfa7",
+        "name": "ok4",
+        "statusCode": "200",
+        "headers": {},
+        "x": 1030,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "cbe8983ab1ea3741",
+        "type": "postgresql",
+        "z": "049d8c751483bfa7",
+        "name": "ger all users",
+        "query": "select * from contacts;",
+        "postgreSQLConfig": "4f625833a90ff676",
+        "split": false,
+        "rowsPerMsg": 1,
+        "outputs": 1,
+        "x": 550,
+        "y": 700,
+        "wires": [
+            [
+                "be0b940fa1d1d927",
+                "fafd9831b3bb7baa"
+            ]
+        ]
+    },
+    {
+        "id": "be0b940fa1d1d927",
+        "type": "function",
+        "z": "049d8c751483bfa7",
+        "name": "show all users",
+        "func": "const sqlResponse = msg.payload;\n\nmsg.payload = msg.payloadOrig;\n\nconst chatId = msg.payload.message.chat.id;\nconst text = msg.payload.message.text;\nconst userName = [\n  msg.payload.message.chat.first_name,\n  msg.payload.message.chat.last_name\n].join(' ');\n\nmsg.url = global.get('TG_BASE_API_URL')\n    + env.get('TG_API_TOKEN')\n    + '/sendMessage'\n\nmsg.payload = {\n  chat_id: chatId,\n  text: `\n    Будь ласка, ось всі користувачі:\n    ${sqlResponse.map(u => `${u.contact_name} ДН: ${new Date(u.birthday).toLocaleDateString() || 'не зазначено'}`).join(',\\n')}\n  `\n};\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 740,
+        "y": 700,
+        "wires": [
+            [
+                "d1dd9cca4871ab5e"
+            ]
+        ]
+    },
+    {
+        "id": "fafd9831b3bb7baa",
+        "type": "debug",
+        "z": "049d8c751483bfa7",
+        "name": "get all users sql",
+        "active": false,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 750,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "227ff8bf72f058a8",
+        "type": "function",
+        "z": "049d8c751483bfa7",
+        "name": "save prev payload",
+        "func": "msg.payloadOrig = msg.payload;\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 370,
+        "y": 700,
+        "wires": [
+            [
+                "cbe8983ab1ea3741"
+            ]
+        ]
+    }
+]

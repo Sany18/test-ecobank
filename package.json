@@ -1,0 +1,19 @@
+{
+  "name": "ecobank",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node-red flows.json --useDir . --settings settings.local.js",
+    "prod": "node-red flows.json --useDir . --settings settings.prod.js --userDir ./usr",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "node-red": "^4.0.8",
+    "node-red-contrib-postgresql": "^0.14.2"
+  }
+}
